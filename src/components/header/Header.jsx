@@ -1,10 +1,13 @@
-
+import Container from 'react-bootstrap/Container';
+import Image from 'react-bootstrap/Image';
+import logo from  "../../assets/logo.png";
 
 const Header  = () => {
     return (
-        <div>
-            Header
-        </div>
+        <Container>
+            <Image src={logo} width="270px" />
+            <h1> Greatest Players</h1>
+        </Container>
     )
 }
 

@@ -4,7 +4,7 @@ import PlayerContainer from './components/players/PlayerContainer';
 
 function App() {
   return (
-    <Container>
+    <Container className='text-center mt-5'>
       <Header/>
       <PlayerContainer/>
     </Container>
