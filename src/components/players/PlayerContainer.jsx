@@ -1,34 +1,33 @@
-import Form from 'react-bootstrap/Form';
-import {data} from "../../helpers/data";
-import {Container,Row,Col} from "react-bootstrap";
-import Card from 'react-bootstrap/Card';
+import { useState } from "react";
+import { Col, Container, Row } from "react-bootstrap"; //!yazım olarak daha kullanışlı ama performans açısından üstteki yöntem daha ideal
+import Form from "react-bootstrap/Form";
+import { data } from "../../helpers/data";
+import PlayerCard from "./PlayerCard";
 
 const PlayerContainer = () => {
-    return (
-        <div>
-           <Form.Control type="search" placeholder="Search" />
-           <Container>
-            <Row>
-                {data.map((footballers) => (
-                    <Col xs={10} sm={8} md={6} lg={4} xl={2}>
-                        <Card style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src={footballers.img} />
-                        <Card.Body>
-                          <Card.Title>{footballers.name}</Card.Title>
-                        </Card.Body>
-                        <ul>
-                          {
-                          footballers.statistics.map(item=> <li className='list-unstyled h5 text-start'> ⚽ {item} </li>)
-                          }
-                        </ul>
-                        <span>{footballers.official_career}</span>
-                      </Card>
-                    </Col>
-                ))}
-            </Row>
-           </Container>
-        </div>
-    )
-}
+    const [search,setSearch] = useState('');
+
+  const handleChange = (e) => {
+    console.log("first",e.target.value)
+    setSearch(e.target.value); //!setter metodu her zaman asenkron çalışır.
+
+  }
+  console.log("second",search)
+
+  const filteredData = data.filter(item=> item.name.toLowerCase().includes(search.trim().toLowerCase()));
+  console.log(filteredData)
+  return (
+    <div>
+      <Form.Control type="search" placeholder="Search players..." onChange={handleChange} className="w-50 mx-auto my-2" />
+      <Container className="p-3 rounded-4 card-container my-3">
+        <Row xs={1} md={2} lg={3} className="justify-content-center g-3">
+          {filteredData.map((player) => (
+            <PlayerCard key={player.id} legend={player}/>
+          ))}
+        </Row>
+      </Container>
+    </div>
+  );
+};
 
 export default PlayerContainer;
