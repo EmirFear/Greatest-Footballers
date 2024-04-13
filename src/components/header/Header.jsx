@@ -6,7 +6,7 @@ const Header  = () => {
     return (
         <Container>
             <Image src={logo} width="270px" />
-            <h1> Greatest Players</h1>
+            <h1 className='my-2 title'> Greatest Players</h1>
         </Container>
     )
 }
