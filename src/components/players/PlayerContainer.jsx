@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Col, Container, Row } from "react-bootstrap"; //!yazım olarak daha kullanışlı ama performans açısından üstteki yöntem daha ideal
+import {Container, Row } from "react-bootstrap"; //!yazım olarak daha kullanışlı ama performans açısından üstteki yöntem daha ideal
 import Form from "react-bootstrap/Form";
 import { data } from "../../helpers/data";
 import PlayerCard from "./PlayerCard";
@@ -22,7 +22,7 @@ const PlayerContainer = () => {
       <Container className="p-3 rounded-4 card-container my-3">
         <Row xs={1} md={2} lg={3} className="justify-content-center g-3">
           {filteredData.map((player) => (
-            <PlayerCard key={player.id} legend={player}/>
+            <PlayerCard key={player.id} player={player}/>
           ))}
         </Row>
       </Container>

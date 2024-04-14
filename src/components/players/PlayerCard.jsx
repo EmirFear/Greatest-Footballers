@@ -1,6 +1,7 @@
 import {useState} from "react"
-import { Col, Container, Row } from "react-bootstrap"; 
+import { Col} from "react-bootstrap"; 
 import Card from "react-bootstrap/Card";
+
 const PlayerCard = ({player}) => {
     const [show,setShow] = useState(false);
     // console.log(show)
